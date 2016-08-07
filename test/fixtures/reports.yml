@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  size: MyString
+  unit: MyString
+  company: MyString
+  sell_date: 2016-08-06
+  target_company: MyString
+  sell_volume: 
+
+two:
+  name: MyString
+  size: MyString
+  unit: MyString
+  company: MyString
+  sell_date: 2016-08-06
+  target_company: MyString
+  sell_volume: 

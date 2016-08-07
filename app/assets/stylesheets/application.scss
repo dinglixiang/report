@@ -1,0 +1,119 @@
+/*
+ *= require bootstrap-multiselect
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+html, body {
+  margin: 0px;
+  height: 100%;
+}
+
+body {
+  /*background-color: #66CCCC;*/
+  background-color: #009999;
+  .main-color {
+    background-color: white;
+  }
+}
+
+.nav-sidebar {
+    width: 100%;
+    padding: 8px 0;
+    /*border-right: 1px solid #ddd;*/
+}
+.nav-sidebar a {
+    /*color: #333;*/
+    -webkit-transition: all 0.08s linear;
+    -moz-transition: all 0.08s linear;
+    -o-transition: all 0.08s linear;
+    transition: all 0.08s linear;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+    color: floralwhite;
+}
+
+ .nav-sidebar a:visited {
+   background-color: #009999;
+  }
+ .nav-sidebar a:link {
+   background-color: #009999;
+  }
+
+.nav-sidebar .active a {
+    cursor: default;
+    /*background-color: #428bca;*/
+    background-color: #339999;
+    color: #fff;
+    text-shadow: 1px 1px 1px #666;
+}
+.nav-sidebar .active a:hover {
+    /*background-color: #428bca;*/
+    background-color: #336666;
+}
+
+ nav li {
+   i {
+     padding-right: 5px;
+   }
+   a:hover {
+     /*background-color: #428bca;*/
+     background-color: #336666 !important;
+   }
+}
+.nav-sidebar .text-overflow a,
+.nav-sidebar .text-overflow .media-body {
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+/* Right-aligned sidebar */
+.nav-sidebar.pull-right {
+    border-right: 0;
+    border-left: 1px solid #ddd;
+}
+.nav-sidebar.pull-right a {
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+tfoot th select {
+  max-width: 200px;
+  float: left;
+}
+
+.form-group {
+  label {
+    /*padding-right: 10px;*/
+    /*width: 100px !important;*/
+  }
+  select {
+    width: 200px !important;
+  }
+  input {
+    width: 200px !important;
+  }
+}
+
+.container .row {
+  padding-top: 10px;
+}
+
+.record-count {
+  float: left;
+  margin-top: 20px;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.auto-height {
+  height: auto;
+  background-color: white;
+}

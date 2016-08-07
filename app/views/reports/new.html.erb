@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="bottom-line-auth"><h4>导入销售数据</h4></div>
+  <hr>
+  <%= form_tag import_reports_path, multipart: true, class: 'form-line' do %>
+    <div class="form-group">
+      <%= label_tag '请选择xls文件' %>
+      <%= file_field_tag :file, id: 'upload_input', class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= submit_tag "导入", class: 'btn btn-info' %>
+    </div>
+  <% end %>
+</div>

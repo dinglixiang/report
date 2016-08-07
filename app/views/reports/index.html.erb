@@ -1,0 +1,70 @@
+<link href="//cdn.bootcss.com/pickadate.js/3.5.6/compressed/themes/classic.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/pickadate.js/3.5.6/compressed/themes/classic.date.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/pickadate.js/3.5.6/compressed/picker.js"></script>
+<script src="//cdn.bootcss.com/pickadate.js/3.5.6/compressed/picker.date.js"></script>
+
+<%= render 'search_form' %>
+
+<div id="results" style="display: none">
+  <table id="report_table"  class="table table-bordered" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>品名</th>
+        <th>规格</th>
+        <th>包装单位</th>
+        <th>厂家</th>
+        <th>日期</th>
+        <th style="width:250px;">往来单位名称</th>
+        <th>出库数量</th>
+      </tr>
+    </thead>
+    <tbody id="content">
+      <%= render partial: 'report', collection: @reports, as: :report%>
+    </tbody>
+  </table>
+  <div id="paginator">
+    <%= render 'pagination' %>
+  </div>
+</div>
+<script>
+  $('#download').click(function(){
+    var name = $('#report_name').val();
+    var size = $('#report_size').val();
+    var company = $('#report_company').val();
+    var targetCompany = $('#report_target_company').val();
+    var startDate = $('input[name="start_date"]').val();
+    var endDate = $('input[name="end_date"]').val();
+    var downloadLink = $(this).attr('href');
+    downloadLink += '?search=true&name=' + name + '&size='+ size + '&company=' + company;
+    downloadLink += '&target_company=' + targetCompany + '&start_date=' + startDate + '&end_date=' + endDate
+    $(this).attr({'href': downloadLink});
+    return validateForm();
+  });
+
+  $('#search').click(function(){
+    return validateForm();
+  });
+
+  function validateForm(){
+    var startDate = $('input[name="start_date"]').val();
+    var endDate = $('input[name="end_date"]').val();
+    if(startDate && endDate && (startDate > endDate)){
+      alert('时间选择错误，请重新选择');
+      return false;
+    }
+    return true;
+  }
+
+  $('.datepicker').pickadate({
+    monthsFull: [ '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月' ],
+    monthsShort: [ '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二' ],
+    weekdaysFull: [ '星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六' ],
+    weekdaysShort: [ '日', '一', '二', '三', '四', '五', '六' ],
+    today: '今日',
+    clear: '清除',
+    close: '关闭',
+    firstDay: 1,
+    format: 'yyyy-mm-dd',
+    formatSubmit: 'yyyy/mm/dd'
+  });
+</script>

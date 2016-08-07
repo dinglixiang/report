@@ -1,0 +1,10 @@
+<tr>
+  <td><%= report.name %></td>
+  <td><%= report.size %></td>
+  <td><%= report.unit %></td>
+  <td><%= report.company %></td>
+  <td><%= report.sell_date&.strftime('%F') %></td>
+  <td><%= report.target_company %></td>
+  <td><%= format "%.3f", report.sell_volume %></td>
+</tr>
+
