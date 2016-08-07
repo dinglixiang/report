@@ -7,6 +7,7 @@ gem 'rails', '~> 5.0.0'
 gem 'mysql2'
 gem 'spreadsheet'
 gem 'kaminari', '~> 0.17.0'
+gem 'config'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
