@@ -10,7 +10,7 @@ module CSVImporter
         record = row.to_a.compact.reject(&:blank?)
         report_hash = Hash[COLUMNS.map.with_index{|k, index| [k, record[index]]}]
         Report.create!(report_hash)
-      rescue e
+      rescue Exception => e
         puts e.inspect
         next
       end
