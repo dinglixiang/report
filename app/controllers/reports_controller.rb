@@ -20,6 +20,10 @@ class ReportsController < ApplicationController
     redirect_to new_report_path
   end
 
+  def signout
+    request_http_basic_authentication
+  end
+
   def download
     Spreadsheet.client_encoding = 'UTF-8'
     book = Spreadsheet::Workbook.new

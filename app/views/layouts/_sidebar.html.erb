@@ -10,13 +10,13 @@
     <li><a href="#"><i class="glyphicon glyphicon-list"></i>库存管理</a></li>
     <li><a href="#"><i class="glyphicon glyphicon-search"></i>综合查询</a></li>
     <li class="nav-divider"></li>
-    <li><a href="#"><i class="glyphicon glyphicon-off"></i>退出</a></li>
+    <li><a href="<%= signout_reports_path %>" data-id='signout'><i class="glyphicon glyphicon-off"></i>退出</a></li>
   </ul>
 </nav>
 
 <script>
   $('nav li a').click(function(){
-    if($(this).data('id') !== 'sell'){
+    if(!(($(this).data('id') === 'sell') || ($(this).data('id') === 'signout'))){
       alert('权限不足');
     }
   });

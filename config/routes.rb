@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       post :import
       get :download
       get :truncate
+      get :signout
     end
   end
 
