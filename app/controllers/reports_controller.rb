@@ -15,6 +15,11 @@ class ReportsController < ApplicationController
     redirect_to reports_path
   end
 
+  def truncate
+    ActiveRecord::Base.connection.execute("TRUNCATE TABLE reports")
+    redirect_to new_report_path
+  end
+
   def download
     Spreadsheet.client_encoding = 'UTF-8'
     book = Spreadsheet::Workbook.new

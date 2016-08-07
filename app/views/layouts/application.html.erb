@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BayerReport</title>
+    <title>医药信息查询</title>
     <%= csrf_meta_tags %>
     <% cache :assets do %>
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -19,11 +19,10 @@
         </div>
         <div class="col-md-10 full-height main-color">
           <div class="row auto-height">
-          <div class="col-md-12 col-lg-12 ">
-            <br>
-            <%= yield %>
-          </div>
-          </div>
+            <div class="col-md-12 col-lg-12 ">
+              <br>
+              <%= yield %>
+            </div>
           </div>
         </div>
       </div>

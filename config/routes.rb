@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     collection do
       post :import
       get :download
+      get :truncate
     end
   end
 

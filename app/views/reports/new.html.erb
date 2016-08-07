@@ -10,4 +10,7 @@
       <%= submit_tag "导入", class: 'btn btn-info' %>
     </div>
   <% end %>
+
+  <hr>
+  <%= link_to '清空所有销售数据', truncate_reports_path, class: 'btn btn-info', data: {confirm: '确定清空吗？'}%>
 </div>
