@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'dashboard#index'
+  root 'reports#index'
 end
