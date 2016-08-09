@@ -5,15 +5,15 @@
       <input type="hidden" class="form-control" name="search" value="<%= params[:search].presence || true %>" placeholder="品名">
       <div class="form-group col-md-4 col-lg-4">
         <label for="report_name">品名</label>
-        <%= f.select :name, Report.names, {prompt: '请选择'}, {class: 'form-control'} %>
+        <%= f.select :name, Report.names, {prompt: '请选择'}, {multiple: true, class: 'form-control'} %>
       </div>
       <div class="form-group col-md-4 col-lg-4">
         <label for="size" class="">规格</label>
-        <%= f.select :size, Report.sizes, {prompt: '请选择'}, class: 'form-control'  %>
+        <%= f.select :size, Report.sizes, {}, {multiple: true, class: 'form-control'} %>
       </div>
       <div class="form-group col-md-4 col-lg-4">
         <label for="company" class="">厂家</label>
-        <%= f.select :company, Report.companies, {prompt: '请选择'}, class: 'form-control'  %>
+        <%= f.select :company, Report.companies, {}, {multiple: true, class: 'form-control'} %>
       </div>
     </div>
     <div class="row">
@@ -27,14 +27,20 @@
       </div>
       <div class="form-group col-md-4 col-lg-4">
         <label for="target_company" class="">往来单位名称</label>
-        <%= f.select :target_company, Report.target_companies, {prompt: '请选择'}, class: 'form-control' %>
+        <%= f.select :target_company, Report.target_companies, {}, {multiple: true, class: 'form-control'} %>
       </div>
     </div>
+    <br>
     <div class="row">
+      <div class="col-md-2 col-lg-2">
+        <%= link_to '重置条件', '#', class: 'btn btn-info btn-block', id: 'clear' %>
+      </div>
+      <div class="col-md-2 col-lg-2">
+      </div>
       <div class="col-md-2 col-lg-2 pull-left">
         <%= f.submit '搜索', class: 'btn btn-info btn-block', id: 'search' %>
       </div>
-      <div class="col-md-6 col-lg-6">
+      <div class="col-md-2 col-lg-2">
       </div>
       <div class="col-md-2 col-lg-2">
         <%= link_to '下载', download_reports_path, class: 'btn btn-info btn-block', id: 'download', target: '_blank' %>
@@ -42,3 +48,22 @@
     </div>
   <% end %>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $('select').multiselect({
+      enableFiltering: true,
+      nonSelectedText: '请选择',
+      nSelectedText: '个选择',
+      numberDisplayed: 1
+    });
+
+    $('#clear').click(function(){
+      $('option', $('select')).each(function(element) {
+        $(this).removeAttr('selected').prop('selected', false);
+      });
+      $('select').multiselect('refresh');
+      return false;
+    });
+  })
+</script>

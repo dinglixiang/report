@@ -46,13 +46,13 @@ class ReportsController < ApplicationController
 
       conditions = []
       conditions << "sell_date >= '#{params[:start_date].to_datetime.to_s(:db)}'" if params[:start_date].present?
-      conditions << "sell_date <= '#{params[:end_date].to_datetime.to_s(:db)}'" if params[:end_date].present?
+      conditions << "sell_date <= '#{params[:end_date].to_datetime.end_of_day.to_s(:db)}'" if params[:end_date].present?
 
       @reports = @reports.where(conditions.join(' AND ')) if conditions.present?
       @reports = @reports.order(:sell_date)
     end
     def search_params
       base_params = params[:report].presence || params
-      base_params.permit(:name, :size, :unit, :company, :target_company).delete_blank
+      base_params.permit(name: [], size: [], unit:[], company: [], target_company: []).to_unsafe_h.deep_delete_blank
     end
 end

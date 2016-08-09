@@ -5,6 +5,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$lightcolor: #009999;
+/*$hovercolor: #336666;*/
+$hovercolor: #46b8da;
+$infocolor: #5bc0de;
+$maxwidth: 250px !important;
+
 html, body {
   margin: 0px;
   height: 100%;
@@ -12,7 +18,7 @@ html, body {
 
 body {
   /*background-color: #66CCCC;*/
-  background-color: #009999;
+  background-color: $lightcolor;
   .main-color {
     background-color: white;
   }
@@ -36,10 +42,10 @@ body {
 }
 
  .nav-sidebar a:visited {
-   background-color: #009999;
+   background-color: $lightcolor;
   }
  .nav-sidebar a:link {
-   background-color: #009999;
+   background-color: $lightcolor;
   }
 
 .nav-sidebar .active a {
@@ -51,7 +57,7 @@ body {
 }
 .nav-sidebar .active a:hover {
     /*background-color: #428bca;*/
-    background-color: #336666;
+    background-color: $hovercolor;
 }
 
  nav li {
@@ -60,7 +66,7 @@ body {
    }
    a:hover {
      /*background-color: #428bca;*/
-     background-color: #336666 !important;
+     background-color: $hovercolor !important;
    }
 }
 .nav-sidebar .text-overflow a,
@@ -83,7 +89,7 @@ body {
 }
 
 tfoot th select {
-  max-width: 200px;
+  max-width: $maxwidth;
   float: left;
 }
 
@@ -93,10 +99,10 @@ tfoot th select {
     /*width: 100px !important;*/
   }
   select {
-    width: 200px !important;
+    width: $maxwidth;
   }
   input {
-    width: 200px !important;
+    width: $maxwidth;
   }
 }
 
@@ -116,4 +122,43 @@ tfoot th select {
 .auto-height {
   height: auto;
   background-color: white;
+}
+
+.btn-group, .btn-group-vertical {
+  display: block;
+  width: $maxwidth;
+}
+
+.dropdown-menu {
+  margin-top: 35px;
+  li a {
+    padding-left: 0px;
+  }
+  li:hover {
+    background-color: $hovercolor;
+  }
+  li.multiselect-item:hover {
+    background-color: white;
+  }
+  .active {
+    background-color: $infocolor;
+    a {
+      background-color: $infocolor;
+    }
+    a:focus {
+      background-color: $infocolor;
+    }
+    a:hover {
+      background-color: $hovercolor;
+    }
+  }
+}
+
+.pull-icon-right {
+  float: right;
+  margin-top: 8px;
+}
+
+.multiselect-container li a label {
+  padding: 3px 0px 3px 30px;
 }
