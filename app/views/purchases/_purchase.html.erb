@@ -1,0 +1,10 @@
+<tr>
+  <td><%= purchase.upstream_client %></td>
+  <td><%= purchase.name %></td>
+  <td><%= purchase.size %></td>
+  <td><%= purchase.unit %></td>
+  <td><%= purchase.company %></td>
+  <td><%= purchase.purchase_date&.strftime('%F') %></td>
+  <td><%= format "%.3f", purchase.purchase_volume %></td>
+</tr>
+

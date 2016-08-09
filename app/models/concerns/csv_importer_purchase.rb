@@ -1,6 +1,6 @@
 require 'spreadsheet'
-module CSVImporter
-  COLUMNS = %w(name size unit company sell_date target_company sell_volume)
+module PurchaseCSVImporter
+  COLUMNS = %w(upstream_client name size unit company purchase_date purchase_volume)
 
   def import(file)
     book = Spreadsheet.open file.path
@@ -9,8 +9,8 @@ module CSVImporter
       begin
         record = row.to_a.compact.deep_delete_blank
         next if record.blank?
-        report_hash = Hash[COLUMNS.map.with_index{|k, index| [k, record[index]]}]
-        Report.create!(report_hash)
+        purchase_hash = Hash[COLUMNS.map.with_index{|k, index| [k, record[index]]}]
+        Purchase.create!(purchase_hash)
       rescue Exception => e
         puts e.inspect
         next

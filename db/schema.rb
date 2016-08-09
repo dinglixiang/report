@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160806042004) do
+ActiveRecord::Schema.define(version: 20160809132102) do
+
+  create_table "purchases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "size"
+    t.string   "unit"
+    t.string   "company"
+    t.datetime "purchase_date"
+    t.integer  "purchase_volume"
+    t.string   "upstream_client"
+    t.index ["company"], name: "index_purchases_on_company", using: :btree
+    t.index ["name"], name: "index_purchases_on_name", using: :btree
+    t.index ["purchase_date"], name: "index_purchases_on_purchase_date", using: :btree
+    t.index ["size"], name: "index_purchases_on_size", using: :btree
+    t.index ["unit"], name: "index_purchases_on_unit", using: :btree
+    t.index ["upstream_client"], name: "index_purchases_on_upstream_client", using: :btree
+  end
 
   create_table "reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"

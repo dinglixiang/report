@@ -6,7 +6,7 @@
 @import "bootstrap";
 
 $lightcolor: #009999;
-/*$hovercolor: #336666;*/
+$lighthovercolor: #336666;
 $hovercolor: #46b8da;
 $infocolor: #5bc0de;
 $maxwidth: 250px !important;
@@ -57,7 +57,7 @@ body {
 }
 .nav-sidebar .active a:hover {
     /*background-color: #428bca;*/
-    background-color: $hovercolor;
+    background-color: $lighthovercolor;
 }
 
  nav li {
@@ -66,7 +66,7 @@ body {
    }
    a:hover {
      /*background-color: #428bca;*/
-     background-color: $hovercolor !important;
+     background-color: $lighthovercolor !important;
    }
 }
 .nav-sidebar .text-overflow a,
