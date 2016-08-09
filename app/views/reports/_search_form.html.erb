@@ -5,7 +5,7 @@
       <input type="hidden" class="form-control" name="search" value="<%= params[:search].presence || true %>" placeholder="品名">
       <div class="form-group col-md-4 col-lg-4">
         <label for="report_name">品名</label>
-        <%= f.select :name, Report.names, {prompt: '请选择'}, {multiple: true, class: 'form-control'} %>
+        <%= f.select :name, Report.names, {}, {multiple: true, class: 'form-control'} %>
       </div>
       <div class="form-group col-md-4 col-lg-4">
         <label for="size" class="">规格</label>
