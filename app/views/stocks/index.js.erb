@@ -1,0 +1,4 @@
+$("#results").show();
+$("#content").html('');
+$("#content").append("<%= j( render partial: 'stock', collection: @stocks, as: :stock ) %>");
+$("#paginator").html("<%= j( render 'pagination' ) %>");

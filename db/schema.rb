@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809132102) do
+ActiveRecord::Schema.define(version: 20160809143731) do
 
   create_table "purchases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 20160809132102) do
     t.datetime "sell_date"
     t.string   "target_company"
     t.integer  "sell_volume"
+  end
+
+  create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string  "name"
+    t.string  "size"
+    t.string  "unit"
+    t.string  "company"
+    t.integer "stock_volume"
+    t.index ["name"], name: "index_stocks_on_name", using: :btree
   end
 
 end

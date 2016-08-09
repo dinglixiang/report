@@ -1,18 +1,17 @@
 Rails.application.routes.draw do
-  resources :purchases do
+  concern :commonable do
     collection do
       post :import
       get :download
       get :truncate
-      get :signout
     end
   end
 
-  resources :reports do
+  resources :stocks, only: [:index, :new], concerns: :commonable
+  resources :purchases, only: [:index, :new], concerns: :commonable
+
+  resources :reports, only: [:index, :new], concerns: :commonable do
     collection do
-      post :import
-      get :download
-      get :truncate
       get :signout
     end
   end
