@@ -1,29 +1,29 @@
-<div><h4>采购管理</h4></div>
+<div><h4>采购明细查询</h4></div>
 <div class="well well-lg">
-  <%= form_for :purchase, url: purchases_path, method: :get, html: {id: 'search-form'}, remote: true do |f| %>
+  <%= form_for :purchase, url: purchases_path, method: :get, html: {id: 'search-form', class: 'form-inline'}, remote: true do |f| %>
     <div class="row">
       <input type="hidden" class="form-control" name="search" value="<%= params[:search].presence || true %>" placeholder="品名">
       <div class="form-group col-md-4 col-lg-4">
-        <label for="purchase_name">品名</label>
+        <label for="purchase_name">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label>
         <%= f.select :name, Purchase.names, {}, {multiple: true, class: 'form-control'} %>
       </div>
       <div class="form-group col-md-4 col-lg-4">
-        <label for="size" class="">规格</label>
+        <label for="size" class="">规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</label>
         <%= f.select :size, Purchase.sizes, {}, {multiple: true, class: 'form-control'} %>
       </div>
       <div class="form-group col-md-4 col-lg-4">
-        <label for="company" class="">厂家</label>
+        <label for="company" class="">生产厂家</label>
         <%= f.select :company, Purchase.companies, {}, {multiple: true, class: 'form-control'} %>
       </div>
     </div>
     <div class="row">
       <div class="form-group col-md-4 col-lg-4">
-        <label for="sell_date" class="">开始时间</label>
+        <label for="sell_date" class="">开始日期</label>
         <input type="text" class="form-control datepicker" name="start_date" value="<%= params[:start_date] %>" placeholder="开始日期">
       </div>
       <div class="form-group col-md-4 col-lg-4">
-        <label for="sell_date" class="">结束时间</label>
-        <input type="text" class="form-control datepicker" name="end_date" value="<%= params[:end_date] %>" placeholder="结束日期">
+        <label for="sell_date" class="">截止日期</label>
+        <input type="text" class="form-control datepicker" name="end_date" value="<%= params[:end_date] %>" placeholder="截止日期">
       </div>
       <div class="form-group col-md-4 col-lg-4">
         <label for="upstream_client" class="">上游客户</label>
@@ -33,17 +33,17 @@
     <br>
     <div class="row">
       <div class="col-md-2 col-lg-2">
-        <%= link_to '重置条件', '#', class: 'btn btn-info btn-block', id: 'clear' %>
+        <%= link_to '重置条件', '#', class: 'btn btn-default btn-block', id: 'clear' %>
       </div>
       <div class="col-md-2 col-lg-2">
       </div>
       <div class="col-md-2 col-lg-2 pull-left">
-        <%= f.submit '搜索', class: 'btn btn-info btn-block', id: 'search' %>
+        <%= f.submit '搜索', class: 'btn btn-default btn-block', id: 'search' %>
       </div>
       <div class="col-md-2 col-lg-2">
       </div>
       <div class="col-md-2 col-lg-2">
-        <%= link_to '下载', download_purchases_path, class: 'btn btn-info btn-block', id: 'download', target: '_blank' %>
+        <%= link_to '下载', download_purchases_path, class: 'btn btn-default btn-block', id: 'download', target: '_blank' %>
       </div>
     </div>
   <% end %>

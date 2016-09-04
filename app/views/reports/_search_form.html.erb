@@ -1,49 +1,84 @@
-<div><h4>销售管理</h4></div>
+<div><h4>商品流向查询</h4></div>
 <div class="well well-lg">
-  <%= form_for :report, url: reports_path, method: :get, html: {id: 'search-form'}, remote: true do |f| %>
+  <%= form_for :report, url: reports_path, method: :get, html: {id: 'search-form', class: 'form-inline'}, remote: true do |f| %>
+    <div class="row">
+      <div class="form-group col-md-4 col-lg-4">
+        <label for="sell_date" class="">开始日期</label>
+        <input type="text" class="form-control datepicker" name="start_date" value="<%= params[:start_date] %>" placeholder="开始日期">
+      </div>
+      <div class="form-group col-md-4 col-lg-4">
+        <label for="sell_date" class="">截止日期</label>
+        <input type="text" class="form-control datepicker" name="end_date" value="<%= params[:end_date] %>" placeholder="截止日期">
+      </div>
+      <div class="form-group col-md-4 col-lg-4">
+        <label for="target_company" class="">往来单位</label>
+        <%= f.select :target_company, Report.target_companies, {}, {multiple: true, class: 'form-control'} %>
+      </div>
+    </div>
     <div class="row">
       <input type="hidden" class="form-control" name="search" value="<%= params[:search].presence || true %>" placeholder="品名">
       <div class="form-group col-md-4 col-lg-4">
-        <label for="report_name">品名</label>
+        <label for="report_name">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label>
         <%= f.select :name, Report.names, {}, {multiple: true, class: 'form-control'} %>
       </div>
       <div class="form-group col-md-4 col-lg-4">
-        <label for="size" class="">规格</label>
+        <label for="size" class="">规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</label>
         <%= f.select :size, Report.sizes, {}, {multiple: true, class: 'form-control'} %>
       </div>
       <div class="form-group col-md-4 col-lg-4">
-        <label for="company" class="">厂家</label>
+        <label for="company" class="">厂&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家</label>
         <%= f.select :company, Report.companies, {}, {multiple: true, class: 'form-control'} %>
       </div>
     </div>
     <div class="row">
       <div class="form-group col-md-4 col-lg-4">
-        <label for="sell_date" class="">开始时间</label>
-        <input type="text" class="form-control datepicker" name="start_date" value="<%= params[:start_date] %>" placeholder="开始日期">
+        <label for="report_name">包装单位</label>
+        <%= f.select :name, Report.units, {}, {multiple: true, class: 'form-control'} %>
       </div>
       <div class="form-group col-md-4 col-lg-4">
-        <label for="sell_date" class="">结束时间</label>
-        <input type="text" class="form-control datepicker" name="end_date" value="<%= params[:end_date] %>" placeholder="结束日期">
+        <label for="size" class="">商品编号</label>
+        <input type="text" class="form-control disabled" name="num" disabled placeholder="商品编号">
       </div>
       <div class="form-group col-md-4 col-lg-4">
-        <label for="target_company" class="">往来单位名称</label>
-        <%= f.select :target_company, Report.target_companies, {}, {multiple: true, class: 'form-control'} %>
+        <label for="size" class="">单位编号</label>
+        <input type="text" class="form-control disabled" name="num" disabled placeholder="单位编号">
+      </div>
+      <div class="form-group col-md-4 col-lg-4">
+        <label for="size" class="">单位名称</label>
+        <input type="text" class="form-control disabled" name="num" disabled placeholder="单位名称">
+      </div>
+      <div class="form-group col-md-4 col-lg-4">
+        <label for="size" class="">供应商编号</label>
+        <input type="text" class="form-control disabled" name="num" disabled placeholder="供应商编号">
+      </div>
+      <div class="form-group col-md-4 col-lg-4">
+        <label for="size" class="">供应商名称</label>
+        <input type="text" class="form-control disabled" name="num" disabled placeholder="供应商名称">
+      </div>
+      <div class="form-group col-md-4 col-lg-4">
+        <label for="size" class="">流向卡号</label>
+        <input type="text" class="form-control disabled" name="num" disabled placeholder="流向卡号">
+      </div>
+      <div class="form-group col-md-4 col-lg-4">
+        <label for="size" class="">流向卡名称</label>
+        <input type="text" class="form-control disabled" name="num" disabled placeholder="流向卡名称">
       </div>
     </div>
+
     <br>
     <div class="row">
       <div class="col-md-2 col-lg-2">
-        <%= link_to '重置条件', '#', class: 'btn btn-info btn-block', id: 'clear' %>
+        <%= link_to '重置条件', '#', class: 'btn btn-default btn-block', id: 'clear' %>
       </div>
       <div class="col-md-2 col-lg-2">
       </div>
       <div class="col-md-2 col-lg-2 pull-left">
-        <%= f.submit '搜索', class: 'btn btn-info btn-block', id: 'search' %>
+        <%= f.submit '搜索', class: 'btn btn-default btn-block', id: 'search' %>
       </div>
       <div class="col-md-2 col-lg-2">
       </div>
       <div class="col-md-2 col-lg-2">
-        <%= link_to '下载', download_reports_path, class: 'btn btn-info btn-block', id: 'download', target: '_blank' %>
+        <%= link_to '下载', download_reports_path, class: 'btn btn-default btn-block', id: 'download', target: '_blank' %>
       </div>
     </div>
   <% end %>

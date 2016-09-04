@@ -1,27 +1,27 @@
-<div><h4>库存管理</h4></div>
+<div><h4>库存商品查询</h4></div>
 <div class="well well-lg">
-  <%= form_for :stock, url: stocks_path, method: :get, html: {id: 'search-form'}, remote: true do |f| %>
+  <%= form_for :stock, url: stocks_path, method: :get, html: {id: 'search-form', class: 'form-inline'}, remote: true do |f| %>
     <div class="row">
       <input type="hidden" class="form-control" name="search" value="<%= params[:search].presence || true %>" placeholder="品名">
       <div class="form-group col-md-4 col-lg-4">
-        <label for="stock_name">品名</label>
+        <label for="stock_name">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label>
         <%= f.select :name, Stock.names, {}, {multiple: true, class: 'form-control'} %>
       </div>
     </div>
     <br>
     <div class="row">
       <div class="col-md-2 col-lg-2">
-        <%= link_to '重置条件', '#', class: 'btn btn-info btn-block', id: 'clear' %>
+        <%= link_to '重置条件', '#', class: 'btn btn-default btn-block', id: 'clear' %>
       </div>
       <div class="col-md-2 col-lg-2">
       </div>
       <div class="col-md-2 col-lg-2 pull-left">
-        <%= f.submit '搜索', class: 'btn btn-info btn-block', id: 'search' %>
+        <%= f.submit '搜索', class: 'btn btn-default btn-block', id: 'search' %>
       </div>
       <div class="col-md-2 col-lg-2">
       </div>
       <div class="col-md-2 col-lg-2">
-        <%= link_to '下载', download_stocks_path, class: 'btn btn-info btn-block', id: 'download', target: '_blank' %>
+        <%= link_to '下载', download_stocks_path, class: 'btn btn-default btn-block', id: 'download', target: '_blank' %>
       </div>
     </div>
   <% end %>

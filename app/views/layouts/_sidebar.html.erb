@@ -1,13 +1,14 @@
+<!--
 <nav class="nav-sidebar">
   <ul class="nav">
-    <li class="active"><a href="javascript:;"><i class="glyphicon glyphicon-home"></i>首页</a></li>
+    <li><a href="javascript:;"><i class="glyphicon glyphicon-home"></i>首页</a></li>
     <li><a href="#"><i class="glyphicon glyphicon-user"></i>用户管理</a></li>
     <li><a href="#"><i class="glyphicon glyphicon-gift"></i>客户管理</a></li>
-    <li><a href="<%= purchases_path %>" data-id="sell"><i class="glyphicon glyphicon-globe"></i>采购管理</a></li>
+    <li class="<%= current_page?(purchases_path) ? 'active' : ''%>"><a href="<%= purchases_path %>" data-id="sell"><i class="glyphicon glyphicon-globe"></i>采购管理</a></li>
     <li><a href="#"><i class="glyphicon glyphicon-fire"></i>产品管理</a></li>
-    <li><a href="<%= reports_path %>" data-id="sell"><i class="glyphicon glyphicon-leaf"></i>销售管理</a></li>
+    <li class="<%= current_page?(reports_path) ? 'active' : ''%>"><a href="<%= reports_path %>" data-id="sell"><i class="glyphicon glyphicon-leaf"></i>销售管理</a></li>
     <li><a href="#"><i class="glyphicon glyphicon-send"></i>退货管理</a></li>
-    <li><a href="<%= stocks_path %>" data-id="sell"><i class="glyphicon glyphicon-list"></i>库存管理</a></li>
+    <li class="<%= current_page?(stocks_path) ? 'active' : ''%>"><a href="<%= stocks_path %>" data-id="sell"><i class="glyphicon glyphicon-list"></i>库存管理</a></li>
     <li><a href="#"><i class="glyphicon glyphicon-search"></i>综合查询</a></li>
     <li class="nav-divider"></li>
     <li><a href="<%= signout_reports_path %>" data-id='signout'><i class="glyphicon glyphicon-off"></i>退出</a></li>
@@ -21,3 +22,55 @@
     }
   });
 </script>
+-->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<div class="nav-side-menu">
+  <div class="brand">超然企业资源管理平台</div>
+  <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+  <div class="menu-list">
+
+    <ul id="menu-content" class="menu-content collapse out">
+      <li class="<%= current_page?(root_path) ? 'active' : ''%>"> <a href="<%= root_path %>"> <i class="glyphicon glyphicon-home"></i> 首页 </a> </li>
+
+      <li data-toggle="collapse" data-target="#products" class="collapsed <%= current_page?(reports_path) ? 'active' : ''%>">
+        <a href="javascript:void(0);"><i class="glyphicon glyphicon-leaf"></i>销售管理系统<span class="arrow"></span></a>
+      </li>
+      <ul class="sub-menu collapse  <%= current_page?(reports_path) ? 'in' : ''%>" id="products">
+        <li class="<%= current_page?(reports_path) ? 'active' : ''%>"><a href="<%= reports_path %>">商品流向查询</a></li>
+        <li>商品流向数据生成</li>
+        <li>商品购销协议管理</li>
+        <li>销售套餐管理</li>
+        <li>促销方案管理</li>
+      </ul>
+
+      <li data-toggle="collapse" data-target="#service" class="collapsed <%= current_page?(purchases_path) ? 'active' : ''%>">
+        <a href="javascript:void(0);"><i class="glyphicon glyphicon-globe"></i>采购管理系统<span class="arrow"></span></a>
+      </li>
+      <ul class="sub-menu collapse <%= current_page?(purchases_path) ? 'in' : ''%>" id="service">
+        <li class="<%= current_page?(purchases_path) ? 'active' : ''%>"><a href="<%= purchases_path %>">采购明细查询</a></li>
+        <li>采购成本表</li>
+        <li>商品进货销售分析</li>
+        <li>采购统计报表</li>
+      </ul>
+
+      <li data-toggle="collapse" data-target="#new" class="collapsed <%= current_page?(stocks_path) ? 'active' : ''%>">
+        <a href="javascript:void(0);"><i class="glyphicon glyphicon-list"></i>库存管理系统<span class="arrow"></span></a>
+      </li>
+      <ul class="sub-menu collapse <%= current_page?(stocks_path) ? 'in' : ''%>" id="new">
+        <li class="<%= current_page?(stocks_path) ? 'active' : ''%>"><a href="<%= stocks_path %>">库存商品查询</a></li>
+        <li>库存商品状况</li>
+        <li>库存盘点</li>
+        <li>库存商品分布</li>
+      </ul>
+
+      <li> <a href="javascript:void(0);"> <i class="glyphicon glyphicon-fire"></i>财务管理系统</a> </li>
+      <li> <a href="javascript:void(0);"> <i class="glyphicon glyphicon-tint"></i>GSP管理系统</a> </li>
+      <li> <a href="javascript:void(0);"> <i class="glyphicon glyphicon-search"></i>业务综合查询</a> </li>
+      <li> <a href="javascript:void(0);"> <i class="glyphicon glyphicon-wrench"></i>基本资料维护</a> </li>
+      <li><a href="<%= signout_reports_path %>" data-id='signout'><i class="glyphicon glyphicon-off"></i>退出</a></li>
+    </ul>
+  </div>
+</div>

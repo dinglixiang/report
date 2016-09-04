@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>医药信息查询</title>
+    <title>超然企业资源管理平台</title>
     <%= csrf_meta_tags %>
     <% cache :assets do %>
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,7 +12,7 @@
   <body>
     <div class="full-height">
       <div class="row-fluid full-height">
-        <div class="col-md-2 full-height">
+        <div class="col-md-2 full-height" style="padding: 0;">
           <% cache :sidebar do %>
             <%= render 'layouts/sidebar' %>
           <% end %>
