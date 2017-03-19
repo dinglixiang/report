@@ -40,18 +40,30 @@ class PurchasesController < ApplicationController
   end
 
   private
-    def search_purchases
-      @purchases = params[:search].blank? ? current_user.purchases.none : current_user.purchases.where(search_params)
+  def search_purchases
+    @purchases = params[:search].blank? ? current_user.purchases.none : current_user.purchases.where(search_params)
 
-      conditions = []
-      conditions << "purchase_date >= '#{params[:start_date].to_datetime.to_s(:db)}'" if params[:start_date].present?
-      conditions << "purchase_date <= '#{params[:end_date].to_datetime.end_of_day.to_s(:db)}'" if params[:end_date].present?
+    conditions = []
+    conditions << "purchase_date >= '#{params[:start_date].to_datetime.to_s(:db)}'" if params[:start_date].present?
+    conditions << "purchase_date <= '#{params[:end_date].to_datetime.end_of_day.to_s(:db)}'" if params[:end_date].present?
 
-      @purchases = @purchases.where(conditions.join(' AND ')) if conditions.present?
-      @purchases = @purchases.order(:purchase_date)
-    end
-    def search_params
-      base_params = params[:purchase].presence || params
-      base_params.permit(name: [], size: [], unit:[], company: [], upstream_client: []).to_unsafe_h.deep_delete_blank
-    end
+    @purchases = @purchases.where(conditions.join(' AND ')) if conditions.present?
+    @purchases = @purchases.order(:purchase_date)
+  end
+
+  def search_params
+    return download_params unless params[:purchase].present?
+    params[:purchase].permit(name: [], size: [], unit: [], company: [], upstream_client: []).to_unsafe_h.deep_delete_blank
+  end
+
+  def download_params
+    %i(name size unit company upstream_client).inject({}) do |result, key|
+      result[key] = split_field(params[key])
+      result
+    end.deep_delete_blank
+  end
+
+  def split_field(field)
+    field.split(',') unless field.blank? || field.inquiry.null?
+  end
 end

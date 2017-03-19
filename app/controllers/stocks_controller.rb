@@ -37,13 +37,22 @@ class StocksController < ApplicationController
   end
 
   private
-    def search_stocks
-      @stocks = params[:search].blank? ? current_user.stocks.none : current_user.stocks.where(search_params)
+  def search_stocks
+    @stocks = params[:search].blank? ? current_user.stocks.none : current_user.stocks.where(search_params)
 
-      @stocks = @stocks.order(:name)
-    end
-    def search_params
-      base_params = params[:stock].presence || params
-      base_params.permit(name: []).to_unsafe_h.deep_delete_blank
-    end
+    @stocks = @stocks.order(:name)
+  end
+
+  def search_params
+    return download_params unless params[:stock].present?
+    params[:stock].permit(name: []).to_unsafe_h.deep_delete_blank
+  end
+
+  def download_params
+    { name: split_field(params[:name]) }.deep_delete_blank
+  end
+
+  def split_field(field)
+    field.split(',') unless field.blank? || field.inquiry.null?
+  end
 end

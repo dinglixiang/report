@@ -37,18 +37,30 @@ class ReportsController < ApplicationController
   end
 
   private
-    def search_reports
-      @reports = params[:search].blank? ? current_user.reports.none : current_user.reports.where(search_params)
+  def search_reports
+    @reports = params[:search].blank? ? current_user.reports.none : current_user.reports.where(search_params)
 
-      conditions = []
-      conditions << "sell_date >= '#{params[:start_date].to_datetime.to_s(:db)}'" if params[:start_date].present?
-      conditions << "sell_date <= '#{params[:end_date].to_datetime.end_of_day.to_s(:db)}'" if params[:end_date].present?
+    conditions = []
+    conditions << "sell_date >= '#{params[:start_date].to_datetime.to_s(:db)}'" if params[:start_date].present?
+    conditions << "sell_date <= '#{params[:end_date].to_datetime.end_of_day.to_s(:db)}'" if params[:end_date].present?
 
-      @reports = @reports.where(conditions.join(' AND ')) if conditions.present?
-      @reports = @reports.order(:sell_date)
-    end
-    def search_params
-      base_params = params[:report].presence || params
-      base_params.permit(name: [], size: [], unit:[], company: [], target_company: []).to_unsafe_h.deep_delete_blank
-    end
+    @reports = @reports.where(conditions.join(' AND ')) if conditions.present?
+    @reports = @reports.order(:sell_date)
+  end
+
+  def search_params
+    return download_params unless params[:report].present?
+    params[:report].permit(name: [], size: [], unit: [], company: [], target_company: []).to_unsafe_h.deep_delete_blank
+  end
+
+  def download_params
+    %i(name size unit company target_company).inject({}) do |result, key|
+      result[key] = split_field(params[key])
+      result
+    end.deep_delete_blank
+  end
+
+  def split_field(field)
+    field.split(',') unless field.blank? || field.inquiry.null?
+  end
 end
