@@ -14,12 +14,12 @@ class PurchasesController < ApplicationController
   end
 
   def import
-    Purchase.import(params[:file])
+    Purchase.import(params[:file], current_user)
     redirect_to purchases_path
   end
 
   def truncate
-    ActiveRecord::Base.connection.execute("TRUNCATE TABLE purchases")
+    Purchase.where(user_id: current_user.id).delete_all
     redirect_to new_purchase_path
   end
 
@@ -41,7 +41,7 @@ class PurchasesController < ApplicationController
 
   private
     def search_purchases
-      @purchases = params[:search].blank? ? Purchase.none : Purchase.where(search_params)
+      @purchases = params[:search].blank? ? current_user.purchases.none : current_user.purchases.where(search_params)
 
       conditions = []
       conditions << "purchase_date >= '#{params[:start_date].to_datetime.to_s(:db)}'" if params[:start_date].present?

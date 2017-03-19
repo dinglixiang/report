@@ -5,6 +5,6 @@
   <td><%= report.company %></td>
   <td><%= report.sell_date&.strftime('%F') %></td>
   <td><%= report.target_company %></td>
-  <td><%= format "%.3f", report.sell_volume %></td>
+  <td><%= format "%.3f", report.sell_volume.to_f %></td>
 </tr>
 

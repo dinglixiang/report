@@ -5,7 +5,7 @@
       <input type="hidden" class="form-control" name="search" value="<%= params[:search].presence || true %>" placeholder="品名">
       <div class="form-group col-md-4 col-lg-4">
         <label for="stock_name">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label>
-        <%= f.select :name, Stock.names, {}, {multiple: true, class: 'form-control'} %>
+        <%= f.select :name, current_user.stocks.names, {}, {multiple: true, class: 'form-control'} %>
       </div>
     </div>
     <br>

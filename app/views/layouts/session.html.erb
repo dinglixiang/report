@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>超然企业资源管理平台</title>
+  <%= csrf_meta_tags %>
+  <% cache :assets do %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <% end %>
+</head>
+
+<body>
+  <%= yield %>
+</body>
+</html>

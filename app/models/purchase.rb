@@ -1,4 +1,5 @@
 class Purchase < ApplicationRecord
+  belongs_to :user
   extend PurchaseCSVImporter
 
   class << self

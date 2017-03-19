@@ -12,28 +12,28 @@
       </div>
       <div class="form-group col-md-4 col-lg-4">
         <label for="target_company" class="">往来单位</label>
-        <%= f.select :target_company, Report.target_companies, {}, {multiple: true, class: 'form-control'} %>
+        <%= f.select :target_company, current_user.reports.target_companies, {}, {multiple: true, class: 'form-control'} %>
       </div>
     </div>
     <div class="row">
       <input type="hidden" class="form-control" name="search" value="<%= params[:search].presence || true %>" placeholder="品名">
       <div class="form-group col-md-4 col-lg-4">
         <label for="report_name">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label>
-        <%= f.select :name, Report.names, {}, {multiple: true, class: 'form-control'} %>
+        <%= f.select :name, current_user.reports.names, {}, {multiple: true, class: 'form-control'} %>
       </div>
       <div class="form-group col-md-4 col-lg-4">
         <label for="size" class="">规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</label>
-        <%= f.select :size, Report.sizes, {}, {multiple: true, class: 'form-control'} %>
+        <%= f.select :size, current_user.reports.sizes, {}, {multiple: true, class: 'form-control'} %>
       </div>
       <div class="form-group col-md-4 col-lg-4">
         <label for="company" class="">厂&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家</label>
-        <%= f.select :company, Report.companies, {}, {multiple: true, class: 'form-control'} %>
+        <%= f.select :company, current_user.reports.companies, {}, {multiple: true, class: 'form-control'} %>
       </div>
     </div>
     <div class="row">
       <div class="form-group col-md-4 col-lg-4">
         <label for="report_name">包装单位</label>
-        <%= f.select :name, Report.units, {}, {multiple: true, class: 'form-control'} %>
+        <%= f.select :name, current_user.reports.units, {}, {multiple: true, class: 'form-control'} %>
       </div>
       <div class="form-group col-md-4 col-lg-4">
         <label for="size" class="">商品编号</label>

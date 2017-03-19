@@ -11,17 +11,13 @@ class ReportsController < ApplicationController
   end
 
   def import
-    Report.import(params[:file])
+    Report.import(params[:file], current_user)
     redirect_to reports_path
   end
 
   def truncate
-    ActiveRecord::Base.connection.execute("TRUNCATE TABLE reports")
+    Report.where(user_id: current_user.id).delete_all
     redirect_to new_report_path
-  end
-
-  def signout
-    request_http_basic_authentication
   end
 
   def download
@@ -42,7 +38,7 @@ class ReportsController < ApplicationController
 
   private
     def search_reports
-      @reports = params[:search].blank? ? Report.none : Report.where(search_params)
+      @reports = params[:search].blank? ? current_user.reports.none : current_user.reports.where(search_params)
 
       conditions = []
       conditions << "sell_date >= '#{params[:start_date].to_datetime.to_s(:db)}'" if params[:start_date].present?

@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809143731) do
+ActiveRecord::Schema.define(version: 20170319034610) do
 
   create_table "purchases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "size"
     t.string   "unit"
@@ -26,9 +27,11 @@ ActiveRecord::Schema.define(version: 20160809143731) do
     t.index ["size"], name: "index_purchases_on_size", using: :btree
     t.index ["unit"], name: "index_purchases_on_unit", using: :btree
     t.index ["upstream_client"], name: "index_purchases_on_upstream_client", using: :btree
+    t.index ["user_id"], name: "index_user_id", using: :btree
   end
 
   create_table "reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "size"
     t.string   "unit"
@@ -36,15 +39,25 @@ ActiveRecord::Schema.define(version: 20160809143731) do
     t.datetime "sell_date"
     t.string   "target_company"
     t.integer  "sell_volume"
+    t.index ["user_id"], name: "index_user_id", using: :btree
   end
 
   create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
     t.string  "name"
     t.string  "size"
     t.string  "unit"
     t.string  "company"
     t.integer "stock_volume"
     t.index ["name"], name: "index_stocks_on_name", using: :btree
+    t.index ["user_id"], name: "index_user_id", using: :btree
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "username",        limit: 20
+    t.string "password_digest"
+    t.string "salt",            limit: 30
+    t.index ["username"], name: "index_users_on_username", using: :btree
   end
 
 end

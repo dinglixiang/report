@@ -11,12 +11,12 @@ class StocksController < ApplicationController
   end
 
   def import
-    Stock.import(params[:file])
+    Stock.import(params[:file], current_user)
     redirect_to stocks_path
   end
 
   def truncate
-    ActiveRecord::Base.connection.execute("TRUNCATE TABLE stocks")
+    Stock.where(user_id: current_user.id).delete_all
     redirect_to new_stock_path
   end
 
@@ -38,7 +38,7 @@ class StocksController < ApplicationController
 
   private
     def search_stocks
-      @stocks = params[:search].blank? ? Stock.none : Stock.where(search_params)
+      @stocks = params[:search].blank? ? current_user.stocks.none : current_user.stocks.where(search_params)
 
       @stocks = @stocks.order(:name)
     end

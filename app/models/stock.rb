@@ -1,4 +1,5 @@
 class Stock < ApplicationRecord
+  belongs_to :user
   extend StockCSVImporter
 
   class << self

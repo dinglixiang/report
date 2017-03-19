@@ -5,6 +5,6 @@
   <td><%= purchase.unit %></td>
   <td><%= purchase.company %></td>
   <td><%= purchase.purchase_date&.strftime('%F') %></td>
-  <td><%= format "%.3f", purchase.purchase_volume %></td>
+  <td><%= format "%.3f", purchase.purchase_volume.to_f %></td>
 </tr>
 

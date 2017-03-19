@@ -5,15 +5,15 @@
       <input type="hidden" class="form-control" name="search" value="<%= params[:search].presence || true %>" placeholder="品名">
       <div class="form-group col-md-4 col-lg-4">
         <label for="purchase_name">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label>
-        <%= f.select :name, Purchase.names, {}, {multiple: true, class: 'form-control'} %>
+        <%= f.select :name, current_user.purchases.names, {}, {multiple: true, class: 'form-control'} %>
       </div>
       <div class="form-group col-md-4 col-lg-4">
         <label for="size" class="">规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</label>
-        <%= f.select :size, Purchase.sizes, {}, {multiple: true, class: 'form-control'} %>
+        <%= f.select :size, current_user.purchases.sizes, {}, {multiple: true, class: 'form-control'} %>
       </div>
       <div class="form-group col-md-4 col-lg-4">
         <label for="company" class="">生产厂家</label>
-        <%= f.select :company, Purchase.companies, {}, {multiple: true, class: 'form-control'} %>
+        <%= f.select :company, current_user.purchases.companies, {}, {multiple: true, class: 'form-control'} %>
       </div>
     </div>
     <div class="row">
@@ -27,7 +27,7 @@
       </div>
       <div class="form-group col-md-4 col-lg-4">
         <label for="upstream_client" class="">上游客户</label>
-        <%= f.select :upstream_client, Purchase.upstream_clients, {}, {multiple: true, class: 'form-control'} %>
+        <%= f.select :upstream_client, current_user.purchases.upstream_clients, {}, {multiple: true, class: 'form-control'} %>
       </div>
     </div>
     <br>

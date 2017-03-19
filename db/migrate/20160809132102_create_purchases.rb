@@ -1,6 +1,7 @@
 class CreatePurchases < ActiveRecord::Migration[5.0]
   def change
     create_table :purchases do |t|
+      t.integer :user_id
       t.string :name
       t.string :size
       t.string :unit
@@ -10,11 +11,11 @@ class CreatePurchases < ActiveRecord::Migration[5.0]
       t.string :upstream_client
     end
 
-    add_index :purchases, :name
-    add_index :purchases, :size
-    add_index :purchases, :unit
-    add_index :purchases, :company
-    add_index :purchases, :purchase_date
-    add_index :purchases, :upstream_client
+    add_index :purchases, [:user_id, :name]
+    add_index :purchases, [:user_id, :size]
+    add_index :purchases, [:user_id, :unit]
+    add_index :purchases, [:user_id, :company]
+    add_index :purchases, [:user_id, :purchase_date]
+    add_index :purchases, [:user_id, :upstream_client]
   end
 end

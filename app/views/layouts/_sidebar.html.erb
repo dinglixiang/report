@@ -11,7 +11,7 @@
     <li class="<%= current_page?(stocks_path) ? 'active' : ''%>"><a href="<%= stocks_path %>" data-id="sell"><i class="glyphicon glyphicon-list"></i>库存管理</a></li>
     <li><a href="#"><i class="glyphicon glyphicon-search"></i>综合查询</a></li>
     <li class="nav-divider"></li>
-    <li><a href="<%= signout_reports_path %>" data-id='signout'><i class="glyphicon glyphicon-off"></i>退出</a></li>
+    <li><a href="<%= signout_sessions_path %>" data-id='signout'><i class="glyphicon glyphicon-off"></i>退出</a></li>
   </ul>
 </nav>
 
@@ -23,8 +23,8 @@
   });
 </script>
 -->
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
+<!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">-->
+<!--<link href="//cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">-->
 
 <div class="nav-side-menu">
   <div class="brand">超然企业资源管理平台</div>
@@ -70,7 +70,7 @@
       <li> <a href="javascript:void(0);"> <i class="glyphicon glyphicon-tint"></i>GSP管理系统</a> </li>
       <li> <a href="javascript:void(0);"> <i class="glyphicon glyphicon-search"></i>业务综合查询</a> </li>
       <li> <a href="javascript:void(0);"> <i class="glyphicon glyphicon-wrench"></i>基本资料维护</a> </li>
-      <li><a href="<%= signout_reports_path %>" data-id='signout'><i class="glyphicon glyphicon-off"></i>退出</a></li>
+      <li><a href="<%= signout_sessions_path %>" data-id='signout'><i class="glyphicon glyphicon-off"></i>退出</a></li>
     </ul>
   </div>
 </div>
