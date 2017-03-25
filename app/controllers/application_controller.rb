@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :reset_session
+  skip_before_filter :verify_authenticity_token, only: [:create, :update]
 
   before_action :authenticate
 
