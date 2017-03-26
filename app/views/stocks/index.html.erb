@@ -1,13 +1,4 @@
-<% cache :extral_assets do %>
-  <link href="//cdn.bootcss.com/pickadate.js/3.5.6/compressed/themes/classic.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/pickadate.js/3.5.6/compressed/themes/classic.date.css" rel="stylesheet">
-  <script src="//cdn.bootcss.com/pickadate.js/3.5.6/compressed/picker.js"></script>
-  <script src="//cdn.bootcss.com/pickadate.js/3.5.6/compressed/picker.date.js"></script>
-<% end %>
-
-<% cache :stock_search_form do %>
-  <%= render 'search_form' %>
-<% end %>
+<%= render 'search_form' %>
 
 <div id="results" style="display: none">
   <table id="stock_table"  class="table table-bordered" cellspacing="0" width="100%">
@@ -21,18 +12,14 @@
       </tr>
     </thead>
     <tbody id="content">
-      <% cache :stock_collection do %>
-        <%= render partial: 'stock', collection: @stocks, as: :stock %>
-      <% end %>
+      <%= render partial: 'stock', collection: @stocks, as: :stock %>
     </tbody>
   </table>
-  <% cache :stock_paginator do %>
-    <div id="paginator">
-      <%= render 'pagination' %>
-    </div>
-  <% end %>
+  <div id="paginator">
+    <%= render 'pagination' %>
+  </div>
 </div>
-<% cache :stock_index_script do %>
+
 <script>
   $('#download').click(function(){
     var name = $('#stock_name').val();
@@ -42,4 +29,3 @@
     return true;
   });
 </script>
-<% end %>

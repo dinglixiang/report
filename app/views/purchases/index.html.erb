@@ -1,13 +1,4 @@
-<% cache :extral_assets do %>
-  <link href="//cdn.bootcss.com/pickadate.js/3.5.6/compressed/themes/classic.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/pickadate.js/3.5.6/compressed/themes/classic.date.css" rel="stylesheet">
-  <script src="//cdn.bootcss.com/pickadate.js/3.5.6/compressed/picker.js"></script>
-  <script src="//cdn.bootcss.com/pickadate.js/3.5.6/compressed/picker.date.js"></script>
-<% end %>
-
-<% cache :purchase_search_form do %>
-  <%= render 'search_form' %>
-<% end %>
+<%= render 'search_form' %>
 
 <div id="results" style="display: none">
   <table id="purchase_table"  class="table table-bordered" cellspacing="0" width="100%">
@@ -23,18 +14,14 @@
       </tr>
     </thead>
     <tbody id="content">
-      <% cache :purchase_collection do %>
-        <%= render partial: 'purchase', collection: @purchases, as: :purchase %>
-      <% end %>
+      <%= render partial: 'purchase', collection: @purchases, as: :purchase %>
     </tbody>
   </table>
-  <% cache :purchase_paginator do %>
-    <div id="paginator">
-      <%= render 'pagination' %>
-    </div>
-  <% end %>
+  <div id="paginator">
+    <%= render 'pagination' %>
+  </div>
 </div>
-<% cache :purchase_index_script do %>
+
 <script>
   $('#download').click(function(){
     var name = $('#purchase_name').val();
@@ -77,4 +64,3 @@
     formatSubmit: 'yyyy/mm/dd'
   });
 </script>
-<% end %>
